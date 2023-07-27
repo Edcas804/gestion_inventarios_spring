@@ -33,16 +33,4 @@ public class LoginController {
         }
         return ResponseHandler.generateResponse("Login exitoso", HttpStatus.OK, user);
     }
-    @PutMapping("/{id}")
-    public User update(@RequestBody User u, @PathVariable Integer id)
-    {
-        User user = service.findById(id).get();
-        user.setName(u.getName());
-        user.setEmail(u.getEmail());
-        user.setPassword(u.getPassword());
-        user.setUsername(u.getUsername());
-        user.setRole_id(u.getRole_id());
-        user.setStatus(u.getStatus());
-        return service.save(user);
-    }
 }
