@@ -1,8 +1,11 @@
 package com.co.gestion_inventarios.controllers;
 
 import com.co.gestion_inventarios.models.entity.Product;
+import com.co.gestion_inventarios.models.entity.ResponseHandler;
 import com.co.gestion_inventarios.models.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,32 +13,29 @@ import java.util.Optional;
 import java.util.UUID;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:5173")
 @RequestMapping("/api/product")
 public class ProductController {
 
     @Autowired
     ProductService service;
 
-    @GetMapping
-    public String index()
-    {
-        return "Product service is online";
-    }
     @GetMapping("/{id}")
     public Optional<Product> findById(@PathVariable Integer id)
     {
         return service.findById(id);
     }
 
-    @GetMapping("/")
-    public List<Product> getAll(){
-        return service.findAll();
+    @GetMapping()
+    public ResponseEntity<Object> getAll(){
+        return ResponseHandler.generateResponse("Registros", HttpStatus.OK, service.findAll());
     }
-
     @PostMapping
-    public Product save(@RequestBody Product p)
+    //public Product save(@RequestBody Product p)
+
+    public ResponseEntity<Object> save(@RequestBody Product p)
     {
-        return service.save(p);
+        return ResponseHandler.generateResponse("Creado", HttpStatus.OK, service.save(p));
     }
     @PutMapping("/{id}")
     public Product update(@RequestBody Product p, @PathVariable Integer id)
