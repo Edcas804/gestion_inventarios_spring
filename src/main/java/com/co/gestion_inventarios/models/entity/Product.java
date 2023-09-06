@@ -14,15 +14,26 @@ public class Product {
     @GeneratedValue
     private int code;
     private String name;
-    private String description;
+    private String reference;
     private int stock;
     private String category;
 
+    private String price;
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+
     public Product() { }
-    public Product(int code, String name, String description, int stock, String category) {
+    public Product(int code, String name, String reference, int stock, String category) {
         this.code = code;
         this.name = name;
-        this.description = description;
+        this.reference = reference;
         this.stock = stock;
         this.category = category;
     }
@@ -44,12 +55,12 @@ public class Product {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public String getReference() {
+        return reference;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setReference(String reference) {
+        this.reference = reference;
     }
 
 
@@ -74,7 +85,7 @@ public class Product {
         return "Product{" +
                 "code=" + code +
                 ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
+                ", reference='" + reference + '\'' +
                 ", stock=" + stock +
                 ", category='" + category + '\'' +
                 '}';

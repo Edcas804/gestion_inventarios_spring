@@ -17,19 +17,13 @@ public class UserController {
 
     @Autowired
     UserService service;
-
-    @GetMapping
-    public String index()
-    {
-        return "User service is online";
-    }
     @GetMapping("/{id}")
     public Optional<User> findById(@PathVariable Integer id)
     {
         return service.findById(id);
     }
 
-    @GetMapping("/")
+    @GetMapping()
     public List<User> getAll(){
         return service.findAll();
     }

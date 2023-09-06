@@ -29,6 +29,7 @@ public class ProductController {
     @GetMapping()
     public ResponseEntity<Object> getAll(){
         return ResponseHandler.generateResponse("Registros", HttpStatus.OK, service.findAll());
+
     }
     @PostMapping
     //public Product save(@RequestBody Product p)
@@ -43,6 +44,8 @@ public class ProductController {
         Product product = service.findById(id).get();
         product.setName(p.getName());
         product.setCategory(p.getCategory());
+        product.setStock(p.getStock());
+        product.setReference(p.getReference());
         product.setStock(p.getStock());
         return service.save(product);
     }
