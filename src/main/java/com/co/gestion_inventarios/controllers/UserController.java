@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:5173")
 @RequestMapping("/api/user")
 public class UserController {
 
@@ -24,10 +25,9 @@ public class UserController {
     }
 
     @GetMapping()
-    public List<User> getAll(){
-        return service.findAll();
+    public ResponseEntity<Object> getAll(){
+        return ResponseHandler.generateResponse("Registros", HttpStatus.OK, service.findAll());
     }
-
     @PostMapping
     public ResponseEntity<Object> save(@RequestBody User p)
     {

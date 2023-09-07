@@ -29,11 +29,8 @@ public class ProductController {
     @GetMapping()
     public ResponseEntity<Object> getAll(){
         return ResponseHandler.generateResponse("Registros", HttpStatus.OK, service.findAll());
-
     }
     @PostMapping
-    //public Product save(@RequestBody Product p)
-
     public ResponseEntity<Object> save(@RequestBody Product p)
     {
         return ResponseHandler.generateResponse("Creado", HttpStatus.OK, service.save(p));
