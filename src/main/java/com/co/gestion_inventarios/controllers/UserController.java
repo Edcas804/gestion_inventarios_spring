@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "https://dkotbo2u18ius.cloudfront.net")
 @RequestMapping("/api/user")
 public class UserController {
 
